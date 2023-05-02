@@ -84,24 +84,24 @@ public class PositionApplicant {
 
     //add a static quickSort method that uses an array of PositionApplicant as a parameter
     //and sorts the array in quicksort
-    public static void quickSort(int[] applicants) {
+    public static void quickSort(PositionApplicant[] applicants) {
         quickSort(applicants, 0, applicants.length - 1);
     }
 
     // add a selection sort method that uses an array of integers  as a parameter
     // and sorts the array in selection sort
-    public static void selectionSort(int[] applicants) {
+    public static void selectionSort(PositionApplicant[] applicants) {
         // loop through the array
         for (int i = 0; i < applicants.length; i++) {
             // find the smallest element in the array
             int smallest = i;
             for (int j = i + 1; j < applicants.length; j++) {
-                if (applicants[j] < applicants[smallest]) {
+                if (applicants[j].applicantNumber < applicants[smallest].applicantNumber) {
                     smallest = j;
                 }
             }
             // swap the smallest element with the first element in the array
-            int temp = applicants[i];
+            PositionApplicant temp = applicants[i];
             applicants[i] = applicants[smallest];
             applicants[smallest] = temp;
         }
@@ -109,7 +109,7 @@ public class PositionApplicant {
 
     // add a static quicksort method that uses an array of integers as a parameter
     // and sorts the array in quicksort
-    public static void quickSort(int[] applicants, int start, int end) {
+    public static void quickSort(PositionApplicant[] applicants, int start, int end) {
         // if the array has more than one element
         if (start < end) {
             // partition the array
@@ -123,17 +123,17 @@ public class PositionApplicant {
 
     // add a static partition method that uses an array of integers as a parameter
     // and returns the partition index
-    public static int partition(int[] applicants, int start, int end) {
+    public static int partition(PositionApplicant[] applicants, int start, int end) {
         // set the pivot to the last element in the array
-        int pivot = applicants[end];
+        int pivot = applicants[end].applicantNumber;
         // set the partition index to the first element in the array
         int partitionIndex = start;
         // loop through the array
         for (int i = start; i < end; i++) {
             // if the current element is less than or equal to the pivot
-            if (applicants[i] <= pivot) {
+            if (applicants[i].applicantNumber <= pivot) {
                 // swap the current element with the element at the partition index
-                int temp = applicants[i];
+                PositionApplicant temp = applicants[i];
                 applicants[i] = applicants[partitionIndex];
                 applicants[partitionIndex] = temp;
                 // increment the partition index
@@ -141,7 +141,7 @@ public class PositionApplicant {
             }
         }
         // swap the element at the partition index with the pivot
-        int temp = applicants[partitionIndex];
+        PositionApplicant temp = applicants[partitionIndex];
         applicants[partitionIndex] = applicants[end];
         applicants[end] = temp;
         // return the partition index
@@ -150,11 +150,11 @@ public class PositionApplicant {
 
 
     // add a PositionApplicant sort method using linear search 
-    public static int linearSearch(int[] applicants, int applicantNumber) {
+    public static int linearSearch(PositionApplicant[] applicants, int applicantNumber) {
         // loop through the array
         for (int i = 0; i < applicants.length; i++) {
             // if the current element is equal to the value we are searching for, return the index
-            if (applicants[i] == applicantNumber) {
+            if (applicants[i].applicantNumber == applicantNumber) {
                 return i;
             }
         }
@@ -163,7 +163,7 @@ public class PositionApplicant {
     }
 
     //add a binarySearch algorithm
-    public static int binarySearch(int[] applicants, int applicantNumber) {
+    public static int binarySearch(PositionApplicant[] applicants, int applicantNumber) {
         // set the start index to 0
         int start = 0;
         // set the end index to the length of the array minus 1
@@ -173,11 +173,11 @@ public class PositionApplicant {
             // set the middle index to the average of the start and end indices
             int middle = (start + end) / 2;
             // if the value at the middle index is equal to the value we are searching for, return the index
-            if (applicants[middle] == applicantNumber) {
+            if (applicants[middle].applicantNumber == applicantNumber) {
                 return middle;
             }
             // if the value at the middle index is less than the value we are searching for, set the start index to the middle index plus 1
-            else if (applicants[middle] < applicantNumber) {
+            else if (applicants[middle].applicantNumber < applicantNumber) {
                 start = middle + 1;
             }
             // if the value at the middle index is greater than the value we are searching for, set the end index to the middle index minus 1

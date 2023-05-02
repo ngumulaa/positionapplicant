@@ -22,9 +22,11 @@ public class Sort
         MAX = scan.nextInt();
 
         // create an array of PositionApplicant with random values
-        int[] applicants = new int[MAX];
+        PositionApplicant[] applicants = new PositionApplicant[MAX];
         for (int i = 0; i < MAX; i++) {
-            applicants[i] = rand.nextInt(1, RANGE + 1);
+            applicants[i] = new PositionApplicant(i, rand.nextInt(RANGE), 
+            rand.nextInt(RANGE), rand.nextInt(RANGE), rand.nextInt(RANGE), 
+            rand.nextInt(RANGE), rand.nextInt(RANGE));
         }
 
         // print the array for the selection sort
@@ -63,19 +65,19 @@ public class Sort
         
 }
     // shuffle the array
-    public static void shuffle(int[] applicants) {
+    public static void shuffle(PositionApplicant[] applicants) {
         for (int i = 0; i < applicants.length; i++) {
             int randomIndexToSwap = (int) (Math.random() * applicants.length);
            // swap the current element with the random element 
-            int temp = applicants[randomIndexToSwap];
+            PositionApplicant temp = applicants[randomIndexToSwap];
             applicants[randomIndexToSwap] = applicants[i];
             applicants[i] = temp;
         }
     }
 
     //Add a static method to swap two elements in an array
-    public static void swap(int[] applicants, int i, int j) {
-        int temp = applicants[i];
+    public static void swap(PositionApplicant[] applicants, int i, int j) {
+        PositionApplicant temp = applicants[i];
         applicants[i] = applicants[j];
         applicants[j] = temp;
     }
